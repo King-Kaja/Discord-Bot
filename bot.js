@@ -20,11 +20,11 @@ bot.on('ready', function (evt) {
 bot.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
-    if (message.substring(0, 2) == 'w!') {
-        var args = message.substring(2).split(' ');
+    if (message.substring(0, 1) == '!') {
+        var args = message.substring(1).split(' ');
         var cmd = args[0];
 
-        //args = args.splice(0,2);
+        args = args.splice(1);
         switch(cmd) {
             // !ping
             case 'ping':
@@ -33,21 +33,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     message: 'Pong!'
                 });
             break;
-            case 'life':
-                bot.sendMessage({
-                      to: channelID,
-                      message: 'I am alive.'
-                });
-            break;
             // Just add any case commands if you want to..
          }
-
      }
-     if ((message.toLowerCase().substring(0, 3) == 'im ') || (message.toLowerCase().substring(0, 4) == 'i\'m ')) {
-       bot.sendMessage({
-           to: channelID,
-           message: 'STFU Yui'
-       });
-
-          }
 });
